@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMJ First Year Companion</title>
+<meta name="description" content="A practical, just-in-time guide for first-year Multimedia Journalism students: what to do, what to expect, and who to ask.">
+<meta name="theme-color" content="#0f172a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MMJ Companion">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<meta name="color-scheme" content="light dark">
+<style>
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-nav: rgba(255, 255, 255, 0.85);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+  --border-color: #e2e8f0;
+  --accent: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-soft: #e0f2fe;
+  --accent-text: #0369a1;
+  --callout-bg: #f0f9ff;
+  --callout-border: #bae6fd;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-nav: rgba(30, 41, 59, 0.85);
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-subtle: #94a3b8;
+  --border-color: #334155;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --accent-soft: #0c4a6e;
+  --accent-text: #bae6fd;
+  --callout-bg: #0c4a6e40;
+  --callout-border: #0369a1;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  color:var(--text-main);
+  background:var(--bg-main);
+  line-height:1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Accessibility */
+.skip-link{
+  position:absolute;
+  left:-9999px;
+  top:0;
+  background:var(--accent);
+  color:#fff;
+  padding:12px 20px;
+  border-radius:0 0 8px 0;
+  z-index:100;
+  font-weight:700;
+}
+.skip-link:focus{left:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+
+/* Custom UI Components */
+.nav-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.nav-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.tab-btn {
+  white-space: nowrap;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.tab-btn:hover {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+.tab-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Category Filter Pills */
+.filter-pill {
+  white-space: nowrap;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+.filter-pill.active {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.page { display: none; }
+.page.active { display: block; animation: fadeIn 0.25s ease-in-out; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card-box:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.btn-secondary:hover {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.tag-badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Accordion details styling */
+details {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+details[open] {
+  border-color: var(--accent);
+}
+summary {
+  cursor: pointer;
+  padding: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+  user-select: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::-webkit-details-marker { display: none; }
+details .details-content {
+  padding: 0 16px 16px 16px;
+  color: var(--text-muted);
+}
+
+/* Card grids used for problem-led sections */
+.moment-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+.moment-grid details {
+  margin-bottom: 0;
+  height: 100%;
+  border-radius: 12px;
+}
+.moment-grid details summary {
+  min-height: 72px;
+}
+.moment-grid .card-kicker {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+@media (min-width: 768px) {
+  .moment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Timeline */
+.timeline-item {
+  position: relative;
+  padding-left: 28px;
+  border-left: 2px solid var(--border-color);
+  padding-bottom: 24px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg-card);
+}
+
+.steps-list {
+  counter-reset: step-counter;
+}
+.steps-list li {
+  counter-increment: step-counter;
+  position: relative;
+  padding: 16px 16px 16px 56px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.steps-list li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+/* Toast notification */
+#toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.dark #toast {
+  background: #38bdf8;
+  color: #0f172a;
+}
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.install-dialog {
+  width: min(92vw, 30rem);
+  max-width: 30rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0;
+  color: var(--text-main);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-lg);
+}
+.install-dialog::backdrop {
+  background: rgb(15 23 42 / 0.58);
+}
+.install-dialog-content {
+  padding: 24px;
+}
+.install-dialog h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+.install-dialog p {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+}
+.install-dialog ol {
+  margin: 0 0 20px;
+  padding-left: 1.4rem;
+  color: var(--text-muted);
+}
+.install-dialog li + li {
+  margin-top: 8px;
+}
+.install-dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.install-dialog-actions label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-subtle);
+  font-size: 0.8rem;
+}
+.install-dialog-actions span {
+  flex: 1;
+  color: var(--text-subtle);
+  font-size: 0.8rem;
+}
+
+/* Purged Tailwind Utilities */
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-y-0{top:0;bottom:0}.left-0{left:0}.top-0{top:0}.z-30{z-index:30}.mx-auto{margin-left:auto;margin-right:auto}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.mb-0\.5{margin-bottom:.125rem}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:.5rem}.mt-1{margin-top:.25rem}.mt-12{margin-top:3rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.block{display:block}.inline{display:inline}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-2{height:.5rem}.h-3\.5{height:.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-0{width:0}.w-10{width:2.5rem}.w-3\.5{width:.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-6xl{max-width:72rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.self-start{align-self:flex-start}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.rounded{border-radius:.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-\[var\(--border-color\)\]{border-color:var(--border-color)}.border-\[var\(--callout-border\)\]{border-color:var(--callout-border)}.border-amber-500\/20{border-color:rgba(245,158,11,.2)}.border-sky-200{--tw-border-opacity:1;border-color:rgb(186 230 253/var(--tw-border-opacity,1))}.border-sky-500\/20{border-color:rgba(14,165,233,.2)}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225/var(--tw-border-opacity,1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59/var(--tw-border-opacity,1))}.border-l-amber-500{--tw-border-opacity:1;border-left-color:rgb(245 158 11/var(--tw-border-opacity,1))}.border-l-emerald-500{--tw-border-opacity:1;border-left-color:rgb(16 185 129/var(--tw-border-opacity,1))}.border-l-indigo-500{--tw-border-opacity:1;border-left-color:rgb(99 102 241/var(--tw-border-opacity,1))}.border-l-purple-500{--tw-border-opacity:1;border-left-color:rgb(168 85 247/var(--tw-border-opacity,1))}.border-l-red-500{--tw-border-opacity:1;border-left-color:rgb(239 68 68/var(--tw-border-opacity,1))}.border-l-rose-500{--tw-border-opacity:1;border-left-color:rgb(244 63 94/var(--tw-border-opacity,1))}.border-l-sky-500{--tw-border-opacity:1;border-left-color:rgb(14 165 233/var(--tw-border-opacity,1))}.border-l-teal-500{--tw-border-opacity:1;border-left-color:rgb(20 184 166/var(--tw-border-opacity,1))}.bg-\[var\(--bg-card\)\]{background-color:var(--bg-card)}.bg-\[var\(--bg-nav\)\]{background-color:var(--bg-nav)}.bg-\[var\(--callout-bg\)\]{background-color:var(--callout-bg)}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199/var(--tw-bg-opacity,1))}.bg-amber-500\/10{background-color:rgba(245,158,11,.1)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229/var(--tw-bg-opacity,1))}.bg-indigo-100{--tw-bg-opacity:1;background-color:rgb(224 231 255/var(--tw-bg-opacity,1))}.bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255/var(--tw-bg-opacity,1))}.bg-rose-100{--tw-bg-opacity:1;background-color:rgb(255 228 230/var(--tw-bg-opacity,1))}.bg-sky-100{--tw-bg-opacity:1;background-color:rgb(224 242 254/var(--tw-bg-opacity,1))}.bg-sky-200{--tw-bg-opacity:1;background-color:rgb(186 230 253/var(--tw-bg-opacity,1))}.bg-sky-500{--tw-bg-opacity:1;background-color:rgb(14 165 233/var(--tw-bg-opacity,1))}.bg-sky-500\/10{background-color:rgba(14,165,233,.1)}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.from-sky-50{--tw-gradient-from:#f0f9ff var(--tw-gradient-from-position);--tw-gradient-to:rgba(240,249,255,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-indigo-50{--tw-gradient-to:#eef2ff var(--tw-gradient-to-position)}.p-2{padding:.5rem}.p-2\.5{padding:.625rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-1{padding-bottom:.25rem}.pb-2{padding-bottom:.5rem}.pl-10{padding-left:2.5rem}.pl-3\.5{padding-left:.875rem}.pr-4{padding-right:1rem}.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-left{text-align:left}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-.025em}.tracking-wider{letter-spacing:.05em}.text-\[var\(--text-main\)\]{color:var(--text-main)}.text-\[var\(--text-muted\)\]{color:var(--text-muted)}.text-\[var\(--text-subtle\)\]{color:var(--text-subtle)}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14/var(--tw-text-opacity,1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105/var(--tw-text-opacity,1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229/var(--tw-text-opacity,1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234/var(--tw-text-opacity,1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72/var(--tw-text-opacity,1))}.text-sky-400{--tw-text-opacity:1;color:rgb(56 189 248/var(--tw-text-opacity,1))}.text-sky-600{--tw-text-opacity:1;color:rgb(2 132 199/var(--tw-text-opacity,1))}.text-sky-800{--tw-text-opacity:1;color:rgb(7 89 133/var(--tw-text-opacity,1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240/var(--tw-text-opacity,1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.accent-sky-600{accent-color:#0284c7}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-300{transition-duration:.3s}.hover\:border-sky-400:hover{--tw-border-opacity:1;border-color:rgb(56 189 248/var(--tw-border-opacity,1))}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\:ring-sky-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(14 165 233/var(--tw-ring-opacity,1))}.dark\:border-slate-700:is(.dark *){--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.dark\:bg-amber-950:is(.dark *){--tw-bg-opacity:1;background-color:rgb(69 26 3/var(--tw-bg-opacity,1))}.dark\:bg-emerald-950:is(.dark *){--tw-bg-opacity:1;background-color:rgb(2 44 34/var(--tw-bg-opacity,1))}.dark\:bg-indigo-950:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 27 75/var(--tw-bg-opacity,1))}.dark\:bg-purple-950:is(.dark *){--tw-bg-opacity:1;background-color:rgb(59 7 100/var(--tw-bg-opacity,1))}.dark\:bg-rose-950:is(.dark *){--tw-bg-opacity:1;background-color:rgb(76 5 25/var(--tw-bg-opacity,1))}.dark\:bg-sky-900:is(.dark *){--tw-bg-opacity:1;background-color:rgb(12 74 110/var(--tw-bg-opacity,1))}.dark\:bg-sky-950:is(.dark *){--tw-bg-opacity:1;background-color:rgb(8 47 73/var(--tw-bg-opacity,1))}.dark\:bg-slate-700:is(.dark *){--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.dark\:bg-slate-800:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.dark\:bg-slate-900:is(.dark *){--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.dark\:bg-slate-900\/50:is(.dark *){background-color:rgba(15,23,42,.5)}.dark\:from-slate-800:is(.dark *){--tw-gradient-from:#1e293b var(--tw-gradient-from-position);--tw-gradient-to:rgba(30,41,59,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.dark\:to-slate-800\/60:is(.dark *){--tw-gradient-to:rgba(30,41,59,.6) var(--tw-gradient-to-position)}.dark\:text-amber-200:is(.dark *){--tw-text-opacity:1;color:rgb(253 230 138/var(--tw-text-opacity,1))}.dark\:text-amber-400:is(.dark *){--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.dark\:text-emerald-400:is(.dark *){--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.dark\:text-indigo-400:is(.dark *){--tw-text-opacity:1;color:rgb(129 140 248/var(--tw-text-opacity,1))}.dark\:text-purple-400:is(.dark *){--tw-text-opacity:1;color:rgb(192 132 252/var(--tw-text-opacity,1))}.dark\:text-rose-400:is(.dark *){--tw-text-opacity:1;color:rgb(251 113 133/var(--tw-text-opacity,1))}.dark\:text-sky-200:is(.dark *){--tw-text-opacity:1;color:rgb(186 230 253/var(--tw-text-opacity,1))}.dark\:text-sky-400:is(.dark *){--tw-text-opacity:1;color:rgb(56 189 248/var(--tw-text-opacity,1))}.dark\:text-slate-100:is(.dark *){--tw-text-opacity:1;color:rgb(241 245 249/var(--tw-text-opacity,1))}@media (min-width:640px){.sm\:ml-4{margin-left:1rem}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:self-auto{align-self:auto}.sm\:py-10{padding-top:2.5rem;padding-bottom:2.5rem}.sm\:pb-0{padding-bottom:0}.sm\:text-right{text-align:right}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width:768px){.md\:col-span-2{grid-column:span 2/span 2}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (min-width:1024px){.lg\:col-span-3{grid-column:span 3/span 3}.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}}
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+<a class="skip-link" href="#mainContent">Skip to content</a>
+
+<noscript>
+  <div style="max-width:72rem;margin:0 auto;padding:16px;background:#fef3c7;color:#92400e;font:600 14px/1.5 sans-serif;">
+    This guide needs JavaScript enabled to show its navigation menu and interactive tools. Please enable JavaScript in your browser to use the full MMJ First Year Companion.
+  </div>
+</noscript>
+
+<header class="bg-slate-900 text-white border-b border-slate-800 relative">
+  <div class="max-w-6xl mx-auto px-4 py-8 sm:py-10">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20 mb-3">
+          <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+          MMJ Toolkit & Guidance
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">MMJ First Year Companion</h1>
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+          A practical, just-in-time guide for Multimedia Journalism students: what to do, what to expect, and who to ask.
+        </p>
+      </div>
+      <!-- Theme Switcher Button -->
+      <button id="themeToggle" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-sm font-medium transition-colors flex items-center gap-2 self-start sm:self-auto">
+        <svg aria-hidden="true" id="sunIcon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        <svg aria-hidden="true" id="moonIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <span id="themeModeText">Dark Mode</span>
+      </button>
+      <button id="installHelpButton" class="px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors self-start sm:self-auto" type="button">
+        Install help
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Sticky Top Nav -->
+<nav class="sticky top-0 z-30 bg-[var(--bg-nav)] backdrop-blur-md border-b border-[var(--border-color)] py-2.5 px-4 shadow-sm">
+  <div class="max-w-6xl mx-auto flex items-center gap-1.5 overflow-x-auto nav-scroll pb-1 sm:pb-0" id="nav" aria-label="Main navigation">
+    <!-- Dynamic tab buttons rendered via JS -->
+  </div>
+</nav>
+
+<!-- Main Container -->
+<main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full" id="mainContent">
+
+  <section class="page active" id="home">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">What do you need right now?</h2>
+      <p class="text-[var(--text-muted)] text-lg">You do not need to read this from beginning to end. Start with the problem you are trying to solve.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-sky-100 text-sky-600 dark:bg-sky-950 dark:text-sky-400 flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h6m-6 0V7m6 14V7m-6 0h6"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">I'm new to university</h3>
+          <p class="text-[var(--text-muted)] text-sm mb-4">Understand what is different and what lecturers expect from you.</p>
+        </div>
+        <button type="button" class="btn-primary w-full" data-show="university">Start here</button>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400 flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">I have an assignment</h3>
+          <p class="text-[var(--text-muted)] text-sm mb-4">Work out what the brief is asking and plan your work effectively.</p>
+        </div>
+        <button type="button" class="btn-primary w-full" data-show="assessments">Assessment guide</button>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">I've received feedback</h3>
+          <p class="text-[var(--text-muted)] text-sm mb-4">Use constructive feedback without letting one mark define you.</p>
+        </div>
+        <button type="button" class="btn-primary w-full" data-show="feedback">Feedback Recovery Guide</button>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400 flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">I'm behind</h3>
+          <p class="text-[var(--text-muted)] text-sm mb-4">Stop, prioritise and work out your next practical step immediately.</p>
+        </div>
+        <button type="button" class="btn-primary w-full" data-show="toolkit">Deadline Toolkit</button>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400 flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">I need help</h3>
+          <p class="text-[var(--text-muted)] text-sm mb-4">Find the appropriate person or support service without endless searching.</p>
+        </div>
+        <button type="button" class="btn-primary w-full" data-show="help">Help Directory</button>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-950 dark:text-purple-400 flex items-center justify-center mb-4">
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">I'm worried about something</h3>
+          <p class="text-[var(--text-muted)] text-sm mb-4">See common scenarios and typical first-year situations mapped out.</p>
+        </div>
+        <button type="button" class="btn-primary w-full" data-show="scenarios">What happens next?</button>
+      </div>
+    </div>
+
+    <!-- Interactive Progress Tracker -->
+    <div class="card-box mb-8 bg-gradient-to-br from-sky-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/60 border-sky-200 dark:border-slate-700">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">First Year Milestones Checklist</h3>
+          <p class="text-xs text-[var(--text-muted)]">A simple checklist of useful things to get set up. Tick them off as you go.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="milestoneProgressText" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-sky-200 dark:bg-sky-900 text-sky-800 dark:text-sky-200">0 of 4 Done</span>
+        </div>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden mb-4">
+        <div id="milestoneProgressBar" class="bg-sky-500 h-full w-0 transition-all duration-300"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm" id="milestonesContainer">
+        <label class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition-colors">
+          <input type="checkbox" data-milestone="1" class="w-4 h-4 accent-sky-600 rounded">
+          <span>Logged into Moodle & checked course timetable</span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition-colors">
+          <input type="checkbox" data-milestone="2" class="w-4 h-4 accent-sky-600 rounded">
+          <span>Identified Personal Tutor & contact details</span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition-colors">
+          <input type="checkbox" data-milestone="3" class="w-4 h-4 accent-sky-600 rounded">
+          <span>Read first assessment brief & logged deadlines</span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-sky-400 transition-colors">
+          <input type="checkbox" data-milestone="4" class="w-4 h-4 accent-sky-600 rounded">
+          <span>Saved the MMJ Help Directory contacts</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+      <button type="button" class="card-box text-left hover:border-sky-400" data-show="feedback">
+        <span class="tag-badge mb-2">QUICK TOOL</span>
+        <h3 class="text-base font-bold mb-1">Turn feedback into an action plan</h3>
+        <p class="text-sm text-[var(--text-muted)]">Use the three-box tool to work out what feedback means and what you will do differently next time.</p>
+      </button>
+      <button type="button" class="card-box text-left hover:border-sky-400" data-show="toolkit">
+        <span class="tag-badge mb-2">QUICK TOOL</span>
+        <h3 class="text-base font-bold mb-1">Get unstuck in five minutes</h3>
+        <p class="text-sm text-[var(--text-muted)]">Use the Five-Minute Reset when a deadline feels too big or you do not know where to start.</p>
+      </button>
+    </div>
+
+    <!-- Callout Box -->
+    <div class="p-5 rounded-xl bg-[var(--callout-bg)] border border-[var(--callout-border)] text-[var(--text-main)]">
+      <div class="flex items-start gap-3">
+        <div class="p-2 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 shrink-0">
+          <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <div>
+          <strong class="block text-base font-semibold text-slate-900 dark:text-slate-100 mb-1">You are not expected to know everything immediately.</strong>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">Being a first-year student means learning how university works as well as learning journalism. Asking questions, making mistakes, receiving feedback and trying again are normal parts of becoming a journalist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="welcome">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">1. Welcome to MMJ</h2>
+      <p class="text-[var(--text-muted)] text-lg">Starting university means learning a new subject, a new way of working and a new set of expectations at the same time.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+      <div class="card-box">
+        <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100">University is different</h3>
+        <p class="text-[var(--text-muted)] text-sm">You will have more independence. You will gradually take responsibility for organising your learning, tracking deadlines and asking for help when needed.</p>
+      </div>
+      <div class="card-box">
+        <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100">Everyone feels uncertain</h3>
+        <p class="text-[var(--text-muted)] text-sm">Some students will look as though they know exactly what they are doing. They may not. Uncertainty is a normal part of starting university.</p>
+      </div>
+      <div class="card-box">
+        <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100">Journalism is exciting but demanding</h3>
+        <p class="text-[var(--text-muted)] text-sm">You will research, interview, write, record, photograph, edit and produce work for real audiences. Sometimes you will do things before you feel completely ready.</p>
+      </div>
+      <div class="card-box">
+        <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100">Your confidence will develop</h3>
+        <p class="text-[var(--text-muted)] text-sm">You do not need to arrive confident. Confidence develops through practice, feedback, reflection and trying again.</p>
+      </div>
+    </div>
+
+    <div class="p-5 rounded-xl bg-[var(--callout-bg)] border border-[var(--callout-border)]">
+      <strong class="block text-base font-semibold text-slate-900 dark:text-slate-100 mb-1">You are here to learn.</strong>
+      <p class="text-sm text-[var(--text-muted)]">Making mistakes, asking questions, receiving feedback and trying again are all part of becoming a journalist.</p>
+    </div>
+  </section>
+
+  <section class="page" id="university">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">2. Understanding University</h2>
+      <p class="text-[var(--text-muted)] text-lg">Things you need to know about how university works and what lecturers actually expect in first year.</p>
+    </div>
+
+    <div class="moment-grid">
+      <details open>
+        <summary><span><span class="card-kicker">Starting out</span>What do lecturers actually expect?</span></summary>
+        <div class="details-content">
+          Lecturers do not expect you to know everything. They do expect you to attend and participate, prepare for teaching, check the information provided to you, keep track of deadlines, attempt work independently, ask questions when you are unsure and respond constructively to feedback.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Study habits</span>Independent learning</span></summary>
+        <div class="details-content space-y-2">
+          <p>Independent learning does not mean sitting alone for hours trying to work everything out. It means taking responsibility for what you need to learn: reading, practising, researching, checking, preparing and asking focused questions when you are stuck.</p>
+          <p class="font-semibold text-sky-600 dark:text-sky-400">Try first. Ask second. Follow up third.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Teaching</span>Lectures</span></summary>
+        <div class="details-content">
+          Lectures introduce ideas, concepts, examples and ways of thinking. You do not need to copy every word. Listen for the main ideas, key examples, things you do not understand and topics you want to explore further.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Teaching</span>Seminars and workshops</span></summary>
+        <div class="details-content">
+          This is where you get to use what you are learning. You may discuss ideas, analyse journalism, practise techniques, work with other students, produce something or receive feedback. You will get more from these sessions if you participate rather than simply attend.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Getting help</span>How to contact your tutors</span></summary>
+        <div class="details-content">
+          Before contacting a lecturer, check the assessment brief, Moodle and any guidance already provided. Then explain who you are, which module or assessment you mean, what you have checked and your specific question.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Getting help</span>Asking questions</span></summary>
+        <div class="details-content">
+          There are no stupid questions. Learning to distinguish between <em>“I haven't checked”</em> and <em>“I've checked and I still don't understand”</em> is part of becoming an independent learner.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Your work</span>Academic integrity</span></summary>
+        <div class="details-content">
+          <p class="mb-2">Your work needs to be your own. Be honest about where information comes from, whose ideas you use, who you interview and what material you create. If you are unsure whether something is acceptable, ask before submitting.</p>
+          <span class="text-xs text-[var(--text-subtle)] block italic bg-slate-100 dark:bg-slate-800 p-2 rounded">MMU academic integrity guidance: insert verified link before publication.</span>
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Your responsibilities</span>Attendance</span></summary>
+        <div class="details-content">
+          <p class="mb-2">Journalism is practical and collaborative. Missing teaching can mean missing instruction, discussion, practice, feedback, group activity or assessment information. If you cannot attend, follow the appropriate university process and find out what you have missed.</p>
+          <span class="text-xs text-[var(--text-subtle)] block italic bg-slate-100 dark:bg-slate-800 p-2 rounded">MMU attendance guidance: insert verified process before publication.</span>
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Your systems</span>University systems</span></summary>
+        <div class="details-content">
+          Get into the habit of checking university email, Moodle, assessment information, your timetable, programme announcements and any other platform used by your modules. Put important dates into your own calendar.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Your responsibilities</span>Why nobody reminds you about everything</span></summary>
+        <div class="details-content">
+          Part of becoming an independent student is learning to monitor your own deadlines and responsibilities. Do not rely on someone reminding you. Use your own calendar and check the information available to you.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="page" id="journalism">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">3. Understanding Journalism</h2>
+      <p class="text-[var(--text-muted)] text-lg">The habits you develop now will become part of your identity as a journalist.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">How journalists think</h3>
+        <p class="text-[var(--text-muted)] text-sm">Start with: <strong>What don't I know yet?</strong> Good journalism comes from curiosity, questions and a willingness to challenge assumptions.</p>
+      </div>
+
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">Be curious</h3>
+        <p class="text-[var(--text-muted)] text-sm">Ask what is happening, why it matters, who is affected, who might disagree and what you still need to find out.</p>
+      </div>
+
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">Verification</h3>
+        <p class="text-[var(--text-muted)] text-sm">Someone saying something does not make it true. A social media post or press release is not automatically the whole story. If you do not know, check.</p>
+      </div>
+
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">News judgement</h3>
+        <p class="text-[var(--text-muted)] text-sm">Think about significance, relevance, impact, public interest, proximity, timeliness, conflict and novelty. Practice develops judgement.</p>
+      </div>
+
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">Professional behaviour</h3>
+        <p class="text-[var(--text-muted)] text-sm">Be prepared, reliable, punctual, respectful, organised, accurate, responsive and willing to learn. People remember whether you were trustworthy.</p>
+      </div>
+
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">Ethics</h3>
+        <p class="text-[var(--text-muted)] text-sm">Think about accuracy, fairness, privacy, consent, harm, representation, vulnerability and public interest. Sometimes there will not be an obvious answer.</p>
+      </div>
+
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">Digital identity</h3>
+        <p class="text-[var(--text-muted)] text-sm">Your online presence can become part of your professional identity. Think about what your public social media activity communicates about you.</p>
+      </div>
+
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">Working with sources</h3>
+        <p class="text-[var(--text-muted)] text-sm">Keep track of who you spoke to, their contact details, what they told you, when you spoke and what still needs checking. Do not rely on memory.</p>
+      </div>
+
+      <div class="card-box">
+        <h3 class="text-base font-bold mb-2">Developing confidence</h3>
+        <p class="text-[var(--text-muted)] text-sm">Confidence comes from preparation and practice, not pretending you know more than you do.</p>
+      </div>
+
+      <div class="card-box md:col-span-2 lg:col-span-3">
+        <h3 class="text-base font-bold mb-2">Confidence with technology</h3>
+        <p class="text-[var(--text-muted)] text-sm">You do not need to be a technical expert when you start. Your phone can already help you record interviews, take photographs, shoot video, research and capture notes effectively.</p>
+      </div>
+    </div>
+
+    <div class="p-5 rounded-xl bg-[var(--callout-bg)] border border-[var(--callout-border)]">
+      <strong class="block text-base font-semibold text-slate-900 dark:text-slate-100 mb-1">Journalists do not need to know everything.</strong>
+      <p class="text-sm text-[var(--text-muted)]">They need to know what they need to find out, how to find it, how to check it and how to explain it clearly.</p>
+    </div>
+  </section>
+
+  <section class="page" id="year">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">4. The Year Ahead</h2>
+      <p class="text-[var(--text-muted)] text-lg">A quick guide to the typical rhythm of first year, including what may feel difficult and what usually helps.</p>
+    </div>
+
+    <div class="max-w-3xl ml-2 sm:ml-4 my-6">
+      <div class="timeline-item">
+        <span class="tag-badge mb-2">SEPTEMBER</span>
+        <h3 class="text-lg font-bold">Finding your feet</h3>
+        <p class="text-sm text-[var(--text-muted)] mt-1"><strong>You may think:</strong> Where am I supposed to be? What is Moodle? Have I made the right choice?</p>
+        <p class="text-sm text-sky-600 dark:text-sky-400 mt-1"><strong>What helps:</strong> Attend, ask questions, learn the basic systems, get to know people and establish a routine.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="tag-badge mb-2">FIRST WEEKS OF SEMESTER 1</span>
+        <h3 class="text-lg font-bold">Learning how university works</h3>
+        <p class="text-sm text-[var(--text-muted)] mt-1">You begin to understand teaching, independent study, assessment language and what journalism at university involves.</p>
+        <p class="text-sm font-semibold mt-1">Remember: you are learning the system.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="tag-badge mb-2">FIRST ASSESSMENTS</span>
+        <h3 class="text-lg font-bold">The first big test</h3>
+        <p class="text-sm text-[var(--text-muted)] mt-1">Your first assessment may feel unfamiliar. Read the brief, understand what you have to produce and start early enough to ask questions.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="tag-badge mb-2">CHRISTMAS</span>
+        <h3 class="text-lg font-bold">Pause and look back</h3>
+        <p class="text-sm text-[var(--text-muted)] mt-1">Ask what you have learned, what has become easier, what you are still unsure about and what your feedback has told you.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="tag-badge mb-2">FIRST FEEDBACK</span>
+        <h3 class="text-lg font-bold">Use feedback constructively</h3>
+        <p class="text-sm text-[var(--text-muted)] mt-1">A first mark can feel more significant than it is. Use the Feedback Recovery Guide to turn comments into actions.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="tag-badge mb-2">SEMESTER 2</span>
+        <h3 class="text-lg font-bold">Build on what you know</h3>
+        <p class="text-sm text-[var(--text-muted)] mt-1">You now know more about university, journalism, assessment, deadlines and your own working habits. Use that knowledge.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="tag-badge mb-2">SEMESTER 2 ASSESSMENTS</span>
+        <h3 class="text-lg font-bold">Apply what you have learned</h3>
+        <p class="text-sm text-[var(--text-muted)] mt-1">Expectations increase. The positive study habits you have developed begin to pay off.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="tag-badge mb-2">SUMMER</span>
+        <h3 class="text-lg font-bold">Recognise your progress</h3>
+        <p class="text-sm text-[var(--text-muted)] mt-1">Think back to September. What can you do now that you could not do then?</p>
+      </div>
+    </div>
+
+    <div class="p-3 bg-slate-100 dark:bg-slate-800 text-[var(--text-subtle)] rounded text-xs italic">
+      Programme-specific modules, assessment dates and calendar information should be inserted once confirmed.
+    </div>
+  </section>
+
+  <section class="page" id="assessments">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">5. Your First Assessments</h2>
+      <p class="text-[var(--text-muted)] text-lg">Assessment can feel complicated at first. Break it down into manageable steps.</p>
+    </div>
+
+    <ol class="steps-list mb-8">
+      <li>
+        <strong class="text-base text-slate-900 dark:text-slate-100 block mb-1">Read the brief properly.</strong>
+        <p class="text-sm text-[var(--text-muted)]">Identify the task, target audience, format, word/time limit, required elements, exact deadline and submission method.</p>
+      </li>
+      <li>
+        <strong class="text-base text-slate-900 dark:text-slate-100 block mb-1">Understand the marking criteria.</strong>
+        <p class="text-sm text-[var(--text-muted)]">Use the rubric to understand what successful work needs to demonstrate. Refer to it while producing the work, not just afterwards.</p>
+      </li>
+      <li>
+        <strong class="text-base text-slate-900 dark:text-slate-100 block mb-1">Plan backwards.</strong>
+        <p class="text-sm text-[var(--text-muted)]">Work backwards from the deadline through editing, checking, production, research and preparation. Set an earlier personal deadline.</p>
+      </li>
+      <li>
+        <strong class="text-base text-slate-900 dark:text-slate-100 block mb-1">Break the task into actions.</strong>
+        <p class="text-sm text-[var(--text-muted)]">Replace “do assignment” with specific actions such as research, contact sources, interview, write draft, edit and final check.</p>
+      </li>
+      <li>
+        <strong class="text-base text-slate-900 dark:text-slate-100 block mb-1">Check before submitting.</strong>
+        <p class="text-sm text-[var(--text-muted)]">Return to the brief and criteria. Double check facts, names, audio links, spelling, file formats and submission location.</p>
+      </li>
+      <li>
+        <strong class="text-base text-slate-900 dark:text-slate-100 block mb-1">Learn from the result.</strong>
+        <p class="text-sm text-[var(--text-muted)]">Use feedback to decide what you will carry forward and what specific adjustments you will make next time.</p>
+      </li>
+    </ol>
+
+    <div class="p-5 rounded-xl bg-[var(--callout-bg)] border border-[var(--callout-border)]">
+      <strong class="block text-base font-semibold text-slate-900 dark:text-slate-100 mb-1">Common first-year mistake:</strong>
+      <p class="text-sm text-[var(--text-muted)]">Starting with the creative idea before establishing what the assessment actually requires. Understand the task first. Then decide how to make the work interesting.</p>
+    </div>
+  </section>
+
+  <section class="page" id="feedback">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">6. Feedback Recovery Guide</h2>
+      <p class="text-[var(--text-muted)] text-lg">A process for pausing, understanding what your feedback is really telling you and deciding what to do differently next time.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+      <div class="card-box">
+        <span class="tag-badge mb-2">1. PAUSE</span>
+        <h3 class="font-bold text-sm mb-1">Manage reaction</h3>
+        <p class="text-xs text-[var(--text-muted)]">Give yourself time before deciding what the mark means.</p>
+      </div>
+
+      <div class="card-box">
+        <span class="tag-badge mb-2">2. UNDERSTAND</span>
+        <h3 class="font-bold text-sm mb-1">Read criteria</h3>
+        <p class="text-xs text-[var(--text-muted)]">Identify what worked and what most urgently needs improvement.</p>
+      </div>
+
+      <div class="card-box">
+        <span class="tag-badge mb-2">3. TRANSLATE</span>
+        <h3 class="font-bold text-sm mb-1">Make actions</h3>
+        <p class="text-xs text-[var(--text-muted)]">Turn abstract comments into concrete next steps.</p>
+      </div>
+
+      <div class="card-box">
+        <span class="tag-badge mb-2">4. ACT</span>
+        <h3 class="font-bold text-sm mb-1">Create plan</h3>
+        <p class="text-xs text-[var(--text-muted)]">Choose 2–3 changes for next time. Don't fix everything at once.</p>
+      </div>
+
+      <div class="card-box">
+        <span class="tag-badge mb-2">5. CONFIDENCE</span>
+        <h3 class="font-bold text-sm mb-1">Keep perspective</h3>
+        <p class="text-xs text-[var(--text-muted)]">One mark evaluates one piece of work. It is not an overall judgement about your potential as a student or journalist.</p>
+      </div>
+    </div>
+
+    <!-- Interactive Plan Box -->
+    <div class="card-box bg-slate-50 dark:bg-slate-900/50 border-slate-300 dark:border-slate-700 mb-8">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold">Interactive Mini Action Plan</h3>
+        <span class="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 font-medium" id="fbSaveStatus">
+          <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Auto-saved to browser
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div>
+          <label for="fbFeedback" class="block text-xs font-bold uppercase tracking-wider text-[var(--text-subtle)] mb-1">Feedback</label>
+          <p class="text-xs text-[var(--text-muted)] mb-2">What did the tutor identify?</p>
+          <textarea id="fbFeedback" rows="4" class="w-full p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-sm focus:ring-2 focus:ring-sky-500 outline-none" placeholder="e.g. Sources lacked verification..."></textarea>
+        </div>
+        <div>
+          <label for="fbMeaning" class="block text-xs font-bold uppercase tracking-wider text-[var(--text-subtle)] mb-1">Meaning</label>
+          <p class="text-xs text-[var(--text-muted)] mb-2">What does that mean I need to improve?</p>
+          <textarea id="fbMeaning" rows="4" class="w-full p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-sm focus:ring-2 focus:ring-sky-500 outline-none" placeholder="e.g. I need to verify claim sources independently..."></textarea>
+        </div>
+        <div>
+          <label for="fbAction" class="block text-xs font-bold uppercase tracking-wider text-[var(--text-subtle)] mb-1">Action</label>
+          <p class="text-xs text-[var(--text-muted)] mb-2">What will I do differently next time?</p>
+          <textarea id="fbAction" rows="4" class="w-full p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-sm focus:ring-2 focus:ring-sky-500 outline-none" placeholder="e.g. Keep a verification record sheet for interviews..."></textarea>
+        </div>
+      </div>
+
+      <!-- Action & Export Buttons -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="btn-primary" type="button" id="fbCopy">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+          Copy Plan
+        </button>
+        <button class="btn-secondary" type="button" id="fbDownload">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          Download (.txt)
+        </button>
+        <button class="btn-secondary text-rose-600 dark:text-rose-400" type="button" id="fbClear">Clear Action Plan</button>
+      </div>
+
+      <p class="text-xs text-[var(--text-subtle)] mt-3">Your notes are saved only in this browser to help you return to them. Clear or download your plan if using a shared computer.</p>
+    </div>
+
+    <div class="p-5 rounded-xl bg-[var(--callout-bg)] border border-[var(--callout-border)]">
+      <strong class="block text-base font-semibold text-slate-900 dark:text-slate-100 mb-1">Ask yourself:</strong>
+      <p class="text-sm text-[var(--text-muted)]">“What does this feedback give me to do differently next time?” rather than “What does this mark say about me?”</p>
+    </div>
+  </section>
+
+  <section class="page" id="toolkit">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">7. Deadline Toolkit</h2>
+      <p class="text-[var(--text-muted)] text-lg">Practical tools for managing assignments and recovering when things do not go to plan.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+      <div class="card-box">
+        <h3 class="font-bold mb-2">1. Write everything down</h3>
+        <p class="text-sm text-[var(--text-muted)]">Get assignments, deadlines, practical work, interviews, meetings and personal commitments out of your head and onto a clear list.</p>
+      </div>
+      <div class="card-box">
+        <h3 class="font-bold mb-2">2. Identify immediate priority</h3>
+        <p class="text-sm text-[var(--text-muted)]">Ask what genuinely needs your attention first. The task you are most worried about is not always the most urgent.</p>
+      </div>
+      <div class="card-box">
+        <h3 class="font-bold mb-2">3. Break it down</h3>
+        <p class="text-sm text-[var(--text-muted)]">Turn “I have an assignment” into small actions such as finding sources, preparing questions, interviewing and editing.</p>
+      </div>
+      <div class="card-box">
+        <h3 class="font-bold mb-2">4. Work in short blocks</h3>
+        <p class="text-sm text-[var(--text-muted)]">Try 25–30 minutes working focused, then 5 minutes away from the screen. Repeat as needed.</p>
+      </div>
+      <div class="card-box">
+        <h3 class="font-bold mb-2">5. Remove friction</h3>
+        <p class="text-sm text-[var(--text-muted)]">Put your phone away, close unnecessary tabs, and prepare your recording equipment or document beforehand.</p>
+      </div>
+      <div class="card-box">
+        <h3 class="font-bold mb-2">6. If you are behind, act</h3>
+        <p class="text-sm text-[var(--text-muted)]">Do not disappear. Work out what is outstanding, what is due first, what is realistic and who you need to contact.</p>
+      </div>
+    </div>
+
+    <!-- Five-Minute Reset Form -->
+    <div class="card-box bg-slate-50 dark:bg-slate-900/50 border-slate-300 dark:border-slate-700 mb-8">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold">The Five-Minute Reset</h3>
+        <span class="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 font-medium" id="resetSaveStatus">
+          <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Auto-saved
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label for="rNext" class="block text-xs font-bold uppercase tracking-wider text-[var(--text-subtle)] mb-1">My next deadline</label>
+          <input type="text" id="rNext" class="w-full p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-sm focus:ring-2 focus:ring-sky-500 outline-none" placeholder="e.g. News Feature - Friday 12pm">
+        </div>
+        <div>
+          <label for="rWhat" class="block text-xs font-bold uppercase tracking-wider text-[var(--text-subtle)] mb-1">What I actually need to produce</label>
+          <input type="text" id="rWhat" class="w-full p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-sm focus:ring-2 focus:ring-sky-500 outline-none" placeholder="e.g. 800 word article + audio quote">
+        </div>
+        <div>
+          <label for="rFirst" class="block text-xs font-bold uppercase tracking-wider text-[var(--text-subtle)] mb-1">The first thing I need to do</label>
+          <input type="text" id="rFirst" class="w-full p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-sm focus:ring-2 focus:ring-sky-500 outline-none" placeholder="e.g. Draft 3 interview questions">
+        </div>
+        <div>
+          <label for="rWhen" class="block text-xs font-bold uppercase tracking-wider text-[var(--text-subtle)] mb-1">When I will do it</label>
+          <input type="text" id="rWhen" class="w-full p-2.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-sm focus:ring-2 focus:ring-sky-500 outline-none" placeholder="e.g. Today at 2:00 PM">
+        </div>
+      </div>
+
+      <!-- Action & Export Buttons -->
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="btn-primary" type="button" id="resetCopy">
+            <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+            Copy Reset
+          </button>
+          <button class="btn-secondary" type="button" id="resetDownload">
+            <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Download (.txt)
+          </button>
+          <button class="btn-secondary text-rose-600 dark:text-rose-400" type="button" id="resetClear">Clear Reset</button>
+        </div>
+        <p class="text-sm font-semibold text-sky-600 dark:text-sky-400">Then start the first action immediately!</p>
+      </div>
+      <p class="text-xs text-[var(--text-subtle)] mt-3">Your entries are saved only in this browser. Clear or export the reset when using a shared computer.</p>
+    </div>
+
+    <div class="p-3 bg-slate-100 dark:bg-slate-800 text-[var(--text-subtle)] rounded text-xs italic">
+      Practical assignment checklists and downloadable planners should link to current Moodle resources once confirmed.
+    </div>
+  </section>
+
+  <section class="page" id="help">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">8. The Help Directory</h2>
+      <p class="text-[var(--text-muted)] text-lg">A quick way to work out who to speak to without searching endlessly through university portals.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">I don't understand my assignment</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">First check the brief and Moodle. Then ask a focused question.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: Module Leader
+        </div>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">I don't understand my feedback</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">Read feedback alongside marking criteria and note specific points to clarify.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: Module Leader or Tutor
+        </div>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">I'm falling behind</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">List outstanding work, identify nearest deadlines and make a plan.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: Personal Tutor
+        </div>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">Struggling with wellbeing</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">You do not have to wait until things become a crisis before seeking help.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: Personal Tutor / Wellbeing
+        </div>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">Money is becoming a problem</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">Do not assume you have to deal with financial pressure alone.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: SU & Financial Support
+        </div>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">Thinking about leaving</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">Talk through what is happening before making a final decision.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: Tutor or Programme Lead
+        </div>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">I cannot attend teaching</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">Follow attendance process and find out what you missed.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: Personal Tutor
+        </div>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">I have a technical problem</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">Check university IT guidance first, then contact IT support.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: University IT Service
+        </div>
+      </div>
+
+      <div class="card-box flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-base mb-1">Personal problem affecting study</h3>
+          <p class="text-sm text-[var(--text-muted)] mb-3">You don't need to decide if a problem is "serious enough" to ask for help.</p>
+        </div>
+        <div class="pt-3 border-t border-[var(--border-color)] text-xs font-semibold text-sky-600 dark:text-sky-400">
+          Speak to: Personal Tutor
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-200 text-xs">
+      <strong>Before publication:</strong> Add verified MMU links, named contacts and current procedures for wellbeing, finance, IT, attendance, mitigation, withdrawal/interruption and assessment support.
+    </div>
+  </section>
+
+  <section class="page" id="questions">
+    <div class="mb-6">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">9. Questions Everyone Asks</h2>
+      <p class="text-[var(--text-muted)] text-lg">Instant answers to common first-year questions and doubts.</p>
+    </div>
+
+    <!-- Category Filter Pills -->
+    <div class="flex items-center gap-1.5 overflow-x-auto nav-scroll pb-2 mb-4" id="faqFilterContainer" aria-label="Filter questions by topic">
+      <button class="filter-pill active" data-category="ALL">All Topics</button>
+      <button class="filter-pill" data-category="Belonging">Belonging</button>
+      <button class="filter-pill" data-category="Assessment">Assessment</button>
+      <button class="filter-pill" data-category="Feedback">Feedback</button>
+      <button class="filter-pill" data-category="Getting help">Getting help</button>
+      <button class="filter-pill" data-category="Study habits">Study habits</button>
+      <button class="filter-pill" data-category="Wellbeing">Wellbeing</button>
+      <button class="filter-pill" data-category="Journalism">Journalism</button>
+      <button class="filter-pill" data-category="Your course">Your course</button>
+    </div>
+
+    <!-- Search Input Block -->
+    <div class="relative mb-6">
+      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[var(--text-subtle)]">
+        <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </div>
+      <input type="text" id="faqSearch" placeholder="Search questions (e.g. deadlines, feedback, friends)..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] text-base focus:ring-2 focus:ring-sky-500 outline-none shadow-sm" oninput="filterFAQ()" aria-label="Search questions">
+    </div>
+
+    <div id="faqs" class="moment-grid">
+      <details>
+        <summary><span><span class="card-kicker">Belonging</span>Is everyone else coping better than me?</span></summary>
+        <div class="details-content">
+          You are seeing what other people show you, not what they are experiencing privately. Some students struggle with workload, others with confidence, belonging or understanding assessments. You need to focus on your next practical step.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Assessment</span>What if I hate my first assignment?</span></summary>
+        <div class="details-content">
+          Do not make a major judgement about yourself or the course based on one assessment. Work out whether the problem is the topic, format, journalism, uncertainty or workload, then decide what you need to do next.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Assessment</span>What if I don't understand my first assignment?</span></summary>
+        <div class="details-content">
+          Start with the brief. Identify the exact point you do not understand and ask your module leader a specific question.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Feedback</span>What if I fail an assignment?</span></summary>
+        <div class="details-content">
+          Do not disappear. Read the feedback, understand what needs to change and find out what happens next under current university assessment rules.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Getting help</span>Should I email lecturers?</span></summary>
+        <div class="details-content">
+          Yes, when you need to ask an appropriate question or need support. Check Moodle and the brief first, then make your question specific and clear.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Feedback</span>What if I don't understand my feedback?</span></summary>
+        <div class="details-content">
+          Use the Feedback Recovery Guide. If you are still unsure, ask your tutor for clarification on specific comments.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Study habits</span>How many hours should I be working?</span></summary>
+        <div class="details-content">
+          University study involves scheduled teaching plus preparation, reading, research, journalism practice, production, assessment and reflection. The balance varies. The key is using your time deliberately rather than waiting for deadlines.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Wellbeing</span>Is it normal to feel overwhelmed?</span></summary>
+        <div class="details-content">
+          Feeling overwhelmed can happen, particularly during periods of change or assessment. “Normal” does not mean you should simply put up with it. If it is affecting your ability to study or function, talk to someone.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Belonging</span>What if I don't have any friends yet?</span></summary>
+        <div class="details-content">
+          It takes time. Start small: talk before class, sit with someone new, join group activities, ask someone about an assignment or take part in programme activities. Friendships often develop through repeated contact.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Journalism</span>Do journalists need to know everything?</span></summary>
+        <div class="details-content">
+          No. Journalism depends on curiosity, asking questions, researching and verifying information.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Your course</span>Can I change my mind about studying Multimedia Journalism?</span></summary>
+        <div class="details-content">
+          You can always talk to someone if you are unsure about your course. Speak to your Personal Tutor or Programme Lead before making a decision so you understand all your options.
+        </div>
+      </details>
+
+      <details>
+        <summary><span><span class="card-kicker">Getting help</span>Can I ask “stupid” questions?</span></summary>
+        <div class="details-content">
+          Yes. You will usually learn more by asking than by pretending you understand something you do not.
+        </div>
+      </details>
+    </div>
+
+    <p id="faqEmpty" class="hidden text-center py-8 text-[var(--text-muted)] italic">No questions match your current search and filter settings.</p>
+  </section>
+
+  <section class="page" id="scenarios">
+    <div class="mb-6">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">10. What Happens Next?</h2>
+      <p class="text-[var(--text-muted)] text-lg">Choose the situation that best describes what is happening. Each scenario gives reassurance, a practical next step and the right person to contact.</p>
+    </div>
+
+    <div class="moment-grid">
+      <!-- Scenario 1 -->
+      <div class="card-box border-l-4 border-l-sky-500">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100"><span class="card-kicker">Feedback</span>I've just received 52%. I thought I'd done better.</h3>
+          <button class="btn-primary text-xs shrink-0 self-start sm:self-auto" type="button" data-toggle>What should I do?</button>
+        </div>
+        <div class="answer mt-4 pt-4 border-t border-[var(--border-color)] space-y-3 text-sm hidden">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 block mb-0.5">Here's what most students feel</span>
+            <p class="text-[var(--text-muted)]">Disappointed, angry, confused or embarrassed.</p>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 block mb-0.5">Here's what it actually means</span>
+            <p class="text-[var(--text-muted)]">The mark assesses this specific piece of work against relevant criteria. It is not a permanent grade ceiling.</p>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 block mb-0.5">Here's what to do tomorrow</span>
+            <p class="text-[var(--text-muted)]">Read the feedback alongside criteria and identify two or three actionable changes for your next assignment.</p>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 block mb-0.5">Here's who to speak to</span>
+            <p class="text-sky-600 dark:text-sky-400 font-medium">Your module leader if you need clarification.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scenario 2 -->
+      <div class="card-box border-l-4 border-l-amber-500">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100"><span class="card-kicker">Deadline</span>I've missed a deadline.</h3>
+          <button class="btn-primary text-xs shrink-0 self-start sm:self-auto" type="button" data-toggle>What should I do?</button>
+        </div>
+        <div class="answer mt-4 pt-4 border-t border-[var(--border-color)] space-y-3 text-sm hidden">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-0.5">First</span>
+            <p class="text-[var(--text-muted)]">Do not ignore it or stay quiet.</p>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-0.5">Next</span>
+            <p class="text-[var(--text-muted)]">Check current assessment and university guidance regarding mitigation, extensions, late submission or reassessment.</p>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-0.5">Then</span>
+            <p class="text-[var(--text-muted)]">Follow the correct process immediately and keep copies of all relevant communications.</p>
+          </div>
+          <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded text-xs italic text-[var(--text-subtle)]">
+            MMU-specific process and links must be verified before publication.
+          </div>
+        </div>
+      </div>
+
+      <!-- Scenario 3 -->
+      <div class="card-box border-l-4 border-l-rose-500">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100"><span class="card-kicker">Workload</span>I'm falling behind.</h3>
+          <button class="btn-primary text-xs shrink-0 self-start sm:self-auto" type="button" data-toggle>What should I do?</button>
+        </div>
+        <div class="answer mt-4 pt-4 border-t border-[var(--border-color)] space-y-3 text-sm hidden">
+          <p class="text-[var(--text-muted)]">List everything outstanding. Find the nearest important deadline. Break the assessment into small actions. Decide what you can realistically complete today. Identify whether you need help. Make a realistic plan for the next few days.</p>
+          <div class="pt-2 text-xs font-bold text-sky-600 dark:text-sky-400">
+            If the problem is bigger than one deadline, speak to your Personal Tutor.
+          </div>
+        </div>
+      </div>
+
+      <!-- Scenario 4 -->
+      <div class="card-box border-l-4 border-l-indigo-500">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100"><span class="card-kicker">Assessment</span>I don't understand what my assignment is asking.</h3>
+          <button class="btn-primary text-xs shrink-0 self-start sm:self-auto" type="button" data-toggle>What should I do?</button>
+        </div>
+        <div class="answer mt-4 pt-4 border-t border-[var(--border-color)] space-y-3 text-sm hidden">
+          <p class="text-[var(--text-muted)]">Read the brief again and highlight the main instruction, required elements, format, word/time limit, deadline and marking criteria. Write down the one specific thing you still do not understand and ask your module leader.</p>
+        </div>
+      </div>
+
+      <!-- Scenario 5 -->
+      <div class="card-box border-l-4 border-l-purple-500">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100"><span class="card-kicker">University</span>Everyone else seems to understand university except me.</h3>
+          <button class="btn-primary text-xs shrink-0 self-start sm:self-auto" type="button" data-toggle>What should I do?</button>
+        </div>
+        <div class="answer mt-4 pt-4 border-t border-[var(--border-color)] space-y-3 text-sm hidden">
+          <p class="text-[var(--text-muted)]">University has expectations and routines that are not always explained directly. Check whether you know where to find information, understand your assessments, know who to ask, are tracking deadlines and are attending teaching. If one of these is unclear, that is something you can easily learn.</p>
+        </div>
+      </div>
+
+      <!-- Scenario 6 -->
+      <div class="card-box border-l-4 border-l-red-500">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100"><span class="card-kicker">Your course</span>I'm thinking about withdrawing.</h3>
+          <button class="btn-primary text-xs shrink-0 self-start sm:self-auto" type="button" data-toggle>What should I do?</button>
+        </div>
+        <div class="answer mt-4 pt-4 border-t border-[var(--border-color)] space-y-3 text-sm hidden">
+          <p class="text-[var(--text-muted)]">Talk to your Personal Tutor or Programme Lead before making a final decision. Work out whether the issue is workload, finances, wellbeing, confidence, belonging, a particular assessment or uncertainty about the course. There may be support or another option you have not considered.</p>
+        </div>
+      </div>
+
+      <!-- Scenario 7 -->
+      <div class="card-box border-l-4 border-l-teal-500">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100"><span class="card-kicker">Attendance</span>I can't attend university.</h3>
+          <button class="btn-primary text-xs shrink-0 self-start sm:self-auto" type="button" data-toggle>What should I do?</button>
+        </div>
+        <div class="answer mt-4 pt-4 border-t border-[var(--border-color)] space-y-3 text-sm hidden">
+          <p class="text-[var(--text-muted)]">Follow the appropriate attendance/reporting process. Check what teaching you will miss, check Moodle, find out what you need to catch up on and speak to your tutor if you are unsure. If this is happening repeatedly, talk to your Personal Tutor.</p>
+        </div>
+      </div>
+
+      <!-- Scenario 8 -->
+      <div class="card-box border-l-4 border-l-emerald-500">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-slate-100"><span class="card-kicker">Journalism</span>I'm struggling with a journalism story.</h3>
+          <button class="btn-primary text-xs shrink-0 self-start sm:self-auto" type="button" data-toggle>What should I do?</button>
+        </div>
+        <div class="answer mt-4 pt-4 border-t border-[var(--border-color)] space-y-3 text-sm hidden">
+          <p class="text-[var(--text-muted)]">Journalism can involve difficult material, including grief, trauma, violence, abuse and distressing testimony. Being affected does not mean you are not suited to journalism. Speak to your tutor if you are struggling with a particular story or assignment, and use appropriate university wellbeing support if the issue is affecting your wider wellbeing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Notification Toast -->
+<div id="toast" role="status" aria-live="polite">
+  <svg aria-hidden="true" class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+  <span id="toastText">Action completed successfully.</span>
+</div>
+
+<dialog id="installDialog" class="install-dialog" aria-labelledby="installDialogTitle">
+  <div class="install-dialog-content">
+    <h2 id="installDialogTitle">Add MMJ Companion to your phone</h2>
+    <p id="installDialogIntro"></p>
+    <ol id="installDialogSteps"></ol>
+    <div class="install-dialog-actions">
+      <span>Install help appears once. Reopen it from the header whenever needed.</span>
+      <button id="installDialogClose" class="btn-primary" type="button">Done</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="weeklyCheckInDialog" class="install-dialog" aria-labelledby="weeklyCheckInTitle">
+  <div class="install-dialog-content">
+    <span class="tag-badge" id="weeklyCheckInWeek">WEEKLY CHECK-IN</span>
+    <h2 id="weeklyCheckInTitle"></h2>
+    <p id="weeklyCheckInMessage"></p>
+    <ol id="weeklyCheckInSteps"></ol>
+    <div class="install-dialog-actions">
+      <span>These prompts are reminders, not a substitute for your current module guidance.</span>
+      <button id="weeklyCheckInClose" class="btn-primary" type="button">Got it</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Footer -->
+<footer class="bg-[var(--bg-card)] border-t border-[var(--border-color)] py-6 text-xs text-[var(--text-subtle)] mt-12">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div>
+      MMJ First Year Companion · Interactive toolkit & guide.
+    </div>
+    <div class="text-center sm:text-right">
+      Programme-specific links, contacts, policies, modules and assessment dates will be checked before student publication.
+    </div>
+  </div>
+</footer>
+
+<script>
+// --- Navigation Tab Setup ---
+const pages = [
+  ['home', 'Home'],
+  ['welcome', '1 Welcome'],
+  ['university', '2 University'],
+  ['journalism', '3 Journalism'],
+  ['year', '4 Year Ahead'],
+  ['assessments', '5 Assessments'],
+  ['feedback', '6 Feedback'],
+  ['toolkit', '7 Toolkit'],
+  ['help', '8 Help'],
+  ['questions', '9 Questions'],
+  ['scenarios', '10 What next?']
+];
+
+const pageIds = new Set(pages.map(([id]) => id));
+const nav = document.getElementById('nav');
+
+pages.forEach(([id, label]) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'tab-btn';
+  b.textContent = label;
+  b.dataset.id = id;
+  b.addEventListener('click', () => showPage(id));
+  nav.appendChild(b);
+});
+
+function showPage(id, pushHistory = true, moveFocus = true) {
+  if (!pageIds.has(id)) return;
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(id);
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll('nav button').forEach(b => {
+    const active = b.dataset.id === id;
+    b.classList.toggle('active', active);
+    if (active) {
+      b.setAttribute('aria-current', 'page');
+      if (moveFocus) b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    } else {
+      b.removeAttribute('aria-current');
+    }
+  });
+
+  // Only steal scroll position/focus for actual navigation, not the very
+  // first render on page load (which would otherwise pull focus away from
+  // wherever the browser/user placed it, e.g. the skip link).
+  if (moveFocus) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const heading = target?.querySelector('h2');
+    if (heading) {
+      heading.setAttribute('tabindex', '-1');
+      heading.focus({ preventScroll: true });
+    }
+  }
+
+  if (pushHistory && location.hash.slice(1) !== id) {
+    history.pushState({ page: id }, '', '#' + id);
+  }
+}
+
+// Scenario toggle handler
+function toggleScenario(btn) {
+  const card = btn.closest('.card-box');
+  const ans = card.querySelector('.answer');
+  const isHidden = ans.classList.contains('hidden');
+  
+  ans.classList.toggle('hidden', !isHidden);
+  btn.textContent = isHidden ? 'Hide guidance' : 'What should I do?';
+  btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+}
+
+// --- Category Pill & Search Filter Logic for FAQ (Section 9) ---
+let activeCategory = 'ALL';
+
+function filterFAQ() {
+  const query = document.getElementById('faqSearch')?.value.toLowerCase().trim() || '';
+  let shownCount = 0;
+  
+  document.querySelectorAll('#faqs details').forEach(d => {
+    const kickerText = d.querySelector('.card-kicker')?.textContent.toLowerCase() || '';
+    const fullText = d.textContent.toLowerCase();
+    
+    const matchesCategory = (activeCategory === 'ALL') || (kickerText.includes(activeCategory.toLowerCase()));
+    const matchesQuery = !query || fullText.includes(query);
+    
+    const isVisible = matchesCategory && matchesQuery;
+    d.style.display = isVisible ? 'block' : 'none';
+    if (isVisible) shownCount++;
+  });
+
+  const emptyMsg = document.getElementById('faqEmpty');
+  if (emptyMsg) {
+    emptyMsg.classList.toggle('hidden', shownCount > 0);
+  }
+}
+
+document.querySelectorAll('#faqFilterContainer .filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('#faqFilterContainer .filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    activeCategory = pill.dataset.category || 'ALL';
+    filterFAQ();
+  });
+});
+
+// Event Delegation for Dynamic Click Handles
+document.addEventListener('click', e => {
+  const showBtn = e.target.closest('[data-show]');
+  if (showBtn) {
+    showPage(showBtn.dataset.show);
+    return;
+  }
+  const toggleBtn = e.target.closest('[data-toggle]');
+  if (toggleBtn) {
+    toggleScenario(toggleBtn);
+    return;
+  }
+});
+
+// Safe LocalStorage Wrapper
+const STORAGE_PREFIX = 'mmj_companion_';
+
+const safeStorage = {
+  get(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, value); return true; } catch (e) { return false; }
+  },
+  remove(key) {
+    try { localStorage.removeItem(key); } catch (e) { /* ignore */ }
+  }
+};
+
+// UI Notification Toast
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  const text = document.getElementById('toastText');
+  if (!toast || !text) return;
+  text.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => { toast.classList.remove('show'); }, 2600);
+}
+
+// Helper to copy text to clipboard, using the modern Clipboard API where
+// available (requires a secure context) and falling back to the older
+// execCommand technique otherwise.
+function copyToClipboard(textToCopy, successMessage) {
+  function legacyCopy() {
+    const textarea = document.createElement('textarea');
+    textarea.value = textToCopy;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      showToast(successMessage);
+    } catch (err) {
+      showToast('Failed to copy text.');
+    }
+    document.body.removeChild(textarea);
+  }
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(textToCopy).then(
+      () => showToast(successMessage),
+      () => legacyCopy()
+    );
+  } else {
+    legacyCopy();
+  }
+}
+
+// Helper to download text file
+function downloadTxtFile(filename, text) {
+  const element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+  showToast('Downloaded ' + filename);
+}
+
+// Form Persistence Initializer
+function initFormStorage(fields, clearBtnId, statusId) {
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const saved = safeStorage.get(STORAGE_PREFIX + id);
+    if (saved !== null) el.value = saved;
+
+    el.addEventListener('input', () => {
+      safeStorage.set(STORAGE_PREFIX + id, el.value);
+      showAutoSaveBadge(statusId);
+    });
+  });
+
+  document.getElementById(clearBtnId)?.addEventListener('click', () => {
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+      safeStorage.remove(STORAGE_PREFIX + id);
+    });
+    const firstEl = document.getElementById(fields[0]);
+    if (firstEl) firstEl.focus();
+    showToast('Plan cleared.');
+  });
+}
+
+function showAutoSaveBadge(statusId) {
+  const badge = document.getElementById(statusId);
+  if (!badge) return;
+  badge.style.opacity = '1';
+  setTimeout(() => { badge.style.opacity = '0.7'; }, 1000);
+}
+
+initFormStorage(['fbFeedback', 'fbMeaning', 'fbAction'], 'fbClear', 'fbSaveStatus');
+initFormStorage(['rNext', 'rWhat', 'rFirst', 'rWhen'], 'resetClear', 'resetSaveStatus');
+
+// One-time install helper with a manual reopen button in the header.
+const installDialog = document.getElementById('installDialog');
+const installHelpButton = document.getElementById('installHelpButton');
+const installDialogIntro = document.getElementById('installDialogIntro');
+const installDialogSteps = document.getElementById('installDialogSteps');
+const installDialogClose = document.getElementById('installDialogClose');
+const installHelpSeenKey = STORAGE_PREFIX + 'install_help_seen';
+
+function openInstallHelp() {
+  const userAgent = navigator.userAgent || '';
+  const isIOS = /iPhone|iPad|iPod/i.test(userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isAndroid = /Android/i.test(userAgent);
+
+  if (isIOS) {
+    installDialogIntro.textContent = 'Use Safari to save this guide to your Home Screen.';
+    installDialogSteps.innerHTML = '<li>Tap the Share button in Safari.</li><li>Choose “Add to Home Screen”.</li><li>Tap “Add” to confirm.</li>';
+  } else if (isAndroid) {
+    installDialogIntro.textContent = 'Use Chrome to install this guide like an app.';
+    installDialogSteps.innerHTML = '<li>Open the browser menu (three dots).</li><li>Tap “Install app” or “Add to Home screen”.</li><li>Confirm by tapping “Install” or “Add”.</li>';
+  } else {
+    installDialogIntro.textContent = 'On a phone, use the browser menu to add this guide to your Home Screen.';
+    installDialogSteps.innerHTML = '<li>Open this page on your phone.</li><li>Use the browser menu and choose “Install app” or “Add to Home screen”.</li><li>Follow the confirmation prompt.</li>';
+  }
+
+  installDialog.showModal();
+}
+
+function closeInstallHelp() {
+  safeStorage.set(installHelpSeenKey, '1');
+  installDialog.close();
+}
+
+installHelpButton?.addEventListener('click', openInstallHelp);
+installDialogClose?.addEventListener('click', closeInstallHelp);
+installDialog?.addEventListener('click', event => {
+  if (event.target === installDialog) closeInstallHelp();
+});
+
+if (!safeStorage.get(installHelpSeenKey)) {
+  window.addEventListener('load', () => {
+    setTimeout(openInstallHelp, 700);
+  }, { once: true });
+}
+
+// Teaching-week dates for the 2026/27 academic year. Update these blocks when the next calendar is confirmed.
+const weeklyCheckInDialog = document.getElementById('weeklyCheckInDialog');
+const weeklyCheckInWeek = document.getElementById('weeklyCheckInWeek');
+const weeklyCheckInTitle = document.getElementById('weeklyCheckInTitle');
+const weeklyCheckInMessage = document.getElementById('weeklyCheckInMessage');
+const weeklyCheckInSteps = document.getElementById('weeklyCheckInSteps');
+const weeklyCheckInClose = document.getElementById('weeklyCheckInClose');
+const checkInSeenPrefix = STORAGE_PREFIX + 'check_in_seen_';
+const teachingBlocks = [
+  { term: 'Semester 1', start: '2026-10-05', end: '2026-12-14' },
+  { term: 'Semester 2', start: '2027-02-01', end: '2027-03-15' }
+];
+const checkInPrompts = [
+  {
+    term: 'Semester 1',
+    week: 1,
+    title: 'How are you settling in?',
+    message: 'The first week is about finding your bearings and learning where information lives.',
+    steps: ['Check your timetable, university email and Moodle.', 'Find your module pages and note who to contact when you are unsure.']
+  },
+  {
+    term: 'Semester 1',
+    week: 4,
+    title: 'How is it going so far?',
+    message: 'This is a good point to pause before the semester gathers pace.',
+    steps: ['Open each current assessment brief and highlight the task, format, criteria and deadline.', 'Put every confirmed deadline in your own calendar.', 'Choose the next small action for the assessment that feels least clear.']
+  },
+  {
+    term: 'Semester 1',
+    week: 7,
+    title: 'Are your deadlines still visible?',
+    message: 'Turn the work ahead into a short, realistic plan rather than waiting for the pressure to build.',
+    steps: ['Check whether any assessment information or deadlines have changed.', 'Break the nearest assessment into research, production, editing and submission tasks.', 'Ask your module team one specific question if anything remains unclear.']
+  },
+  {
+    term: 'Semester 1',
+    week: 10,
+    title: 'What has feedback taught you?',
+    message: 'Use recent feedback to choose one or two changes you can carry into your next piece of work.',
+    steps: ['Read the feedback alongside the marking criteria.', 'Write down one strength to keep and one action to repeat next time.']
+  },
+  {
+    term: 'Semester 2',
+    week: 1,
+    title: 'Welcome back: what is next?',
+    message: 'Before the second teaching block gets busy, reconnect with your modules and upcoming assessment work.',
+    steps: ['Check your module pages, timetable and university email.', 'Review assessment briefs and identify the next confirmed deadline.']
+  },
+  {
+    term: 'Semester 2',
+    week: 4,
+    title: 'How is the semester going?',
+    message: 'Pause and check that your current assessment work is moving forward.',
+    steps: ['Review the assessment brief and marking criteria.', 'Check your calendar and turn the nearest deadline into smaller actions.', 'Ask your module team one specific question if anything remains unclear.']
+  },
+  {
+    term: 'Semester 2',
+    week: 7,
+    title: 'Look back and look ahead',
+    message: 'Use what you have learned this year to identify the next habit or skill you want to strengthen.',
+    steps: ['Check what is complete and what is still outstanding.', 'Choose one piece of feedback or advice to apply to your next work.']
+  }
+];
+
+function parseDate(dateString) {
+  const [year, month, day] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function getAcademicWeek(date = new Date()) {
+  const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const block = teachingBlocks.find(({ start, end }) => {
+    const blockEnd = parseDate(end);
+    blockEnd.setDate(blockEnd.getDate() + 6);
+    return currentDate >= parseDate(start) && currentDate <= blockEnd;
+  });
+  if (!block) return null;
+
+  return {
+    term: block.term,
+    week: Math.floor((currentDate - parseDate(block.start)) / (7 * 24 * 60 * 60 * 1000)) + 1
+  };
+}
+
+function openWeeklyCheckIn() {
+  if (installDialog?.open) {
+    setTimeout(openWeeklyCheckIn, 500);
+    return;
+  }
+
+  const academicWeek = getAcademicWeek();
+  if (!academicWeek) return;
+  const { term, week } = academicWeek;
+  const prompt = checkInPrompts.find(item => item.term === term && item.week === week);
+  const checkInKey = `${term.replaceAll(' ', '_')}_${week}`;
+  if (!prompt || safeStorage.get(checkInSeenPrefix + checkInKey)) return;
+
+  weeklyCheckInWeek.textContent = `${term.toUpperCase()} · WEEK ${week}`;
+  weeklyCheckInTitle.textContent = prompt.title;
+  weeklyCheckInMessage.textContent = prompt.message;
+  weeklyCheckInSteps.innerHTML = prompt.steps.map(step => `<li>${step}</li>`).join('');
+  weeklyCheckInDialog.showModal();
+}
+
+function closeWeeklyCheckIn() {
+  const academicWeek = getAcademicWeek();
+  if (academicWeek) {
+    const checkInKey = `${academicWeek.term.replaceAll(' ', '_')}_${academicWeek.week}`;
+    safeStorage.set(checkInSeenPrefix + checkInKey, '1');
+  }
+  weeklyCheckInDialog.close();
+}
+
+weeklyCheckInClose?.addEventListener('click', closeWeeklyCheckIn);
+weeklyCheckInDialog?.addEventListener('click', event => {
+  if (event.target === weeklyCheckInDialog) closeWeeklyCheckIn();
+});
+
+window.addEventListener('load', () => {
+  setTimeout(openWeeklyCheckIn, safeStorage.get(installHelpSeenKey) ? 700 : 1400);
+}, { once: true });
+
+// --- Export Handlers for Feedback Action Plan ---
+document.getElementById('fbCopy')?.addEventListener('click', () => {
+  const fb = document.getElementById('fbFeedback').value.trim() || '[Not entered]';
+  const mn = document.getElementById('fbMeaning').value.trim() || '[Not entered]';
+  const act = document.getElementById('fbAction').value.trim() || '[Not entered]';
+  
+  const text = `MMJ FEEDBACK ACTION PLAN\n` +
+               `--------------------------\n\n` +
+               `1. FEEDBACK (What did the tutor identify?):\n${fb}\n\n` +
+               `2. MEANING (What does that mean I need to improve?):\n${mn}\n\n` +
+               `3. ACTION (What will I do differently next time?):\n${act}\n`;
+               
+  copyToClipboard(text, 'Feedback Plan copied to clipboard!');
+});
+
+document.getElementById('fbDownload')?.addEventListener('click', () => {
+  const fb = document.getElementById('fbFeedback').value.trim() || '[Not entered]';
+  const mn = document.getElementById('fbMeaning').value.trim() || '[Not entered]';
+  const act = document.getElementById('fbAction').value.trim() || '[Not entered]';
+  
+  const text = `MMJ FEEDBACK ACTION PLAN\n` +
+               `Generated: ${new Date().toLocaleDateString()}\n` +
+               `--------------------------\n\n` +
+               `1. FEEDBACK (What did the tutor identify?):\n${fb}\n\n` +
+               `2. MEANING (What does that mean I need to improve?):\n${mn}\n\n` +
+               `3. ACTION (What will I do differently next time?):\n${act}\n`;
+               
+  downloadTxtFile('Feedback_Action_Plan.txt', text);
+});
+
+// --- Export Handlers for Five-Minute Reset ---
+document.getElementById('resetCopy')?.addEventListener('click', () => {
+  const next = document.getElementById('rNext').value.trim() || '[Not entered]';
+  const what = document.getElementById('rWhat').value.trim() || '[Not entered]';
+  const first = document.getElementById('rFirst').value.trim() || '[Not entered]';
+  const when = document.getElementById('rWhen').value.trim() || '[Not entered]';
+
+  const text = `FIVE-MINUTE RESET ACTION PLAN\n` +
+               `-----------------------------\n\n` +
+               `• Next Deadline: ${next}\n` +
+               `• Deliverable: ${what}\n` +
+               `• Immediate First Action: ${first}\n` +
+               `• Scheduled Start: ${when}\n`;
+
+  copyToClipboard(text, 'Five-Minute Reset copied to clipboard!');
+});
+
+document.getElementById('resetDownload')?.addEventListener('click', () => {
+  const next = document.getElementById('rNext').value.trim() || '[Not entered]';
+  const what = document.getElementById('rWhat').value.trim() || '[Not entered]';
+  const first = document.getElementById('rFirst').value.trim() || '[Not entered]';
+  const when = document.getElementById('rWhen').value.trim() || '[Not entered]';
+
+  const text = `FIVE-MINUTE RESET ACTION PLAN\n` +
+               `Generated: ${new Date().toLocaleDateString()}\n` +
+               `-----------------------------\n\n` +
+               `• Next Deadline: ${next}\n` +
+               `• Deliverable: ${what}\n` +
+               `• Immediate First Action: ${first}\n` +
+               `• Scheduled Start: ${when}\n`;
+
+  downloadTxtFile('Five_Minute_Reset.txt', text);
+});
+
+// Milestone Tracker Logic
+function initMilestones() {
+  const checkboxes = document.querySelectorAll('#milestonesContainer input[type="checkbox"]');
+  const bar = document.getElementById('milestoneProgressBar');
+  const text = document.getElementById('milestoneProgressText');
+
+  function updateProgress() {
+    let checkedCount = 0;
+    checkboxes.forEach(cb => {
+      const id = cb.dataset.milestone;
+      if (cb.checked) checkedCount++;
+      safeStorage.set(STORAGE_PREFIX + 'milestone_' + id, cb.checked ? '1' : '0');
+    });
+
+    const percent = (checkedCount / checkboxes.length) * 100;
+    if (bar) bar.style.width = percent + '%';
+    if (text) text.textContent = `${checkedCount} of ${checkboxes.length} Done`;
+  }
+
+  checkboxes.forEach(cb => {
+    const id = cb.dataset.milestone;
+    const saved = safeStorage.get(STORAGE_PREFIX + 'milestone_' + id);
+    if (saved === '1') cb.checked = true;
+    cb.addEventListener('change', updateProgress);
+  });
+
+  updateProgress();
+}
+initMilestones();
+
+// Theme Switcher Logic
+const themeToggleBtn = document.getElementById('themeToggle');
+const sunIcon = document.getElementById('sunIcon');
+const moonIcon = document.getElementById('moonIcon');
+const themeModeText = document.getElementById('themeModeText');
+
+function setTheme(isDark) {
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+    sunIcon.classList.remove('hidden');
+    moonIcon.classList.add('hidden');
+    themeModeText.textContent = 'Light Mode';
+    safeStorage.set(STORAGE_PREFIX + 'theme', 'dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+    sunIcon.classList.add('hidden');
+    moonIcon.classList.remove('hidden');
+    themeModeText.textContent = 'Dark Mode';
+    safeStorage.set(STORAGE_PREFIX + 'theme', 'light');
+  }
+}
+
+const savedTheme = safeStorage.get(STORAGE_PREFIX + 'theme');
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+  setTheme(true);
+} else {
+  setTheme(false);
+}
+
+themeToggleBtn?.addEventListener('click', () => {
+  const isDark = document.documentElement.classList.contains('dark');
+  setTheme(!isDark);
+});
+
+// Browser History & Deep Linking Support
+window.addEventListener('popstate', () => {
+  showPage((location.hash || '#home').slice(1), false);
+});
+
+const startId = (location.hash || '#home').slice(1);
+showPage(pageIds.has(startId) ? startId : 'home', false, false);
+
+// GitHub Pages serves this file over HTTPS, which enables offline app caching.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js', { scope: './' })
+      .catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "MMJ First Year Companion",
+  "short_name": "MMJ Companion",
+  "description": "A practical guide and toolkit for first-year Multimedia Journalism students.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "lang": "en-GB",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
