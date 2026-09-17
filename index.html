@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MMJ First Year Companion</title>
 <meta name="description" content="A practical, just-in-time guide for first-year Multimedia Journalism students: what to do, what to expect, and who to ask.">
 <meta name="theme-color" content="#0f172a">
@@ -58,11 +58,20 @@
 html{scroll-behavior:smooth}
 body{
   margin:0;
+  padding-top: env(safe-area-inset-top, 0px);
   font-family:var(--font-sans);
   color:var(--text-main);
   background:var(--bg-main);
   line-height:1.6;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+textarea, input[type="text"] {
+  font-size: 16px;
+}
+
+#mainNav {
+  top: env(safe-area-inset-top, 0px);
 }
 
 /* Accessibility */
@@ -125,7 +134,7 @@ body{
   white-space: nowrap;
   border: 1px solid var(--border-color);
   background: var(--bg-card);
-  padding: 5px 12px;
+  padding: 7px 14px;
   border-radius: 9999px;
   cursor: pointer;
   color: var(--text-muted);
@@ -444,7 +453,7 @@ details .details-content {
 </header>
 
 <!-- Sticky Top Nav -->
-<nav class="sticky top-0 z-30 bg-[var(--bg-nav)] backdrop-blur-md border-b border-[var(--border-color)] py-2.5 px-4 shadow-sm">
+<nav id="mainNav" class="sticky top-0 z-30 bg-[var(--bg-nav)] backdrop-blur-md border-b border-[var(--border-color)] py-2.5 px-4 shadow-sm">
   <div class="max-w-6xl mx-auto flex items-center gap-1.5 overflow-x-auto nav-scroll pb-1 sm:pb-0" id="nav" aria-label="Main navigation">
     <!-- Dynamic tab buttons rendered via JS -->
   </div>
